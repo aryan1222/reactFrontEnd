@@ -1,17 +1,12 @@
-import './App.css';
-import {Navbar, NavbarBrand} from 'reactstrap';
+import Menu from './components/MenuComponent'
+import Header from './components/Header'
 
 function App() {
   return (
     <div className="App">
       
-      <Navbar dark color='primary'>
-        <div className='container'>
-          
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
-
-        </div>
-      </Navbar>
+      <Header/>
+      <Menu/>     
 
     </div>
   );
