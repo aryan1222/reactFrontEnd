@@ -1,15 +1,29 @@
+import React, {Component} from 'react'
 import Menu from './components/MenuComponent'
 import Header from './components/Header'
+import {dishes} from './shared/dishes'
 
-function App() {
-  return (
-    <div className="App">
-      
-      <Header/>
-      <Menu/>     
+class App extends Component {
 
-    </div>
-  );
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      dishes : dishes
+    };
+
+  }
+
+  render(){
+    return (
+      <div className="App">
+        
+        <Header/>
+        <Menu dishes = {this.state.dishes}/>     
+  
+      </div>
+    );
+  }
 }
 
 export default App;
