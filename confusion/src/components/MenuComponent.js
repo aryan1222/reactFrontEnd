@@ -1,36 +1,37 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Card, CardImg, CardImgOverlay, CardTitle} from 'reactstrap'
 
-class MenuComponent extends Component {
+function RenderMenuItem(props){
+    return (
+        <div>
+            <Card onClick = {() => props.onClick(props.dish.id)}>
+                <CardImg width='100%' src = {props.dish.image} alt={props.dish.name}/>
 
-    render() {
-        
-        const menu = this.props.dishes.map((dish) =>{
-            return(
-                <div key={dish.id} className="col-12 col-md-5 m-1">
-                    <Card onClick = {() => this.props.onClick(dish.id)}>
-                        <CardImg width='100%' src = {dish.image} alt={dish.name}/>
+                <CardImgOverlay>
+                    <CardTitle>{props.dish.name}</CardTitle>
+                </CardImgOverlay>
+            </Card>
+        </div>
+    )
+}
 
-                        <CardImgOverlay>
-                            <CardTitle>{dish.name}</CardTitle>
-                        </CardImgOverlay>
-                    </Card>
-                </div>
-            );
-        })
+const MenuComponent = (props) => {
 
-        return (
+    const menu = props.dishes.map((dish) =>{
+        return(
+            <div key={dish.id} className="col-12 col-md-5 m-1">
+                <RenderMenuItem dish={dish} onClick={props.onClick}/>
+            </div>
+        );
+    })
 
-            <div className='container'>
+    return (
+        <div className='container'>
                 <div className='row'>
                     {menu}
                 </div>
             </div>
-
-            
-        )
-    }
-
+    )
 }
 
 export default MenuComponent;

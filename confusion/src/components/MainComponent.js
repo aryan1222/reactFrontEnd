@@ -46,5 +46,4 @@ class Main extends Component {
 export default Main;
 
 // Main Component - Container Component
-// Menu Component changed from Container -> Presentational Component
-// Dish Detail Component - Container Component
+// Menu and Dish Detail Components changed from Container and Class -> Presentational Component and Fucntional
