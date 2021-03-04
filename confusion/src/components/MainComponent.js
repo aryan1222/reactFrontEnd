@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Menu from './MenuComponent'
 import Header from './Header'
+import Footer from './Footer'
 import {dishes} from '../shared/dishes'
 import DishDetail from './DishDetail';
 
@@ -37,7 +38,8 @@ class Main extends Component {
                 <Header/>
                 <Menu dishes = {this.state.dishes} onClick = {(dishId) => this.onDishSelect(dishId)}/>     
                 <div className="container">{this.renderDish(this.state.selectedDish)}</div>
-                
+                <Footer/>
+
             </div>
         );
     }
