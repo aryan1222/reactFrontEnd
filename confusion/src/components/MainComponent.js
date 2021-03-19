@@ -6,26 +6,9 @@ import Header from './Header'
 import Footer from './Footer'
 import Home from './Home'
 import DishDetail from './DishDetail'
-import {DISHES} from '../shared/dishes'
-import {COMMENTS} from '../shared/comments'
-import {PROMOTIONS} from '../shared/promotions'
-import {LEADERS} from '../shared/leaders'
 import {Route, Switch, Redirect} from 'react-router-dom'
 
 class Main extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      dishes : DISHES,
-      comments: COMMENTS,
-      promotions: PROMOTIONS,
-      leaders: LEADERS
-    };
-
-  }
-
     render(){
 
         const HomePage = ()=>{
