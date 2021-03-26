@@ -9,6 +9,7 @@ const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length > len);
 
+// Comment Form
 class CommentForm extends Component {
 
     constructor(props){
