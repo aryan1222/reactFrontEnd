@@ -4,7 +4,7 @@ import { Comments } from './comments';
 import { Leaders } from './leaders';
 import { Promotions } from './promotions';
 
-const rootStore = combineReducers({
+const rootReducer = combineReducers({
     dishes : Dishes,
     comments : Comments,
     promotions : Promotions,
@@ -12,6 +12,6 @@ const rootStore = combineReducers({
 });
 
 export const configureStore = () => {
-    const store = createStore(rootStore);
+    const store = createStore(rootReducer);
     return store;
 }
