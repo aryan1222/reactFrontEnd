@@ -13,7 +13,4 @@ const rootReducer = combineReducers({
     leaders : Leaders
 });
 
-export const configureStore = () => {
-    const store = createStore(rootReducer, applyMiddleware(thunk, logger));
-    return store;
-}
+export const store = createStore(rootReducer, applyMiddleware(thunk, logger));
