@@ -16,6 +16,7 @@ export const Dishes = (state = initialState, action) => {
                 dishes : action.payload,
                 error : null  
             }
+
         case ActionTypes.DISHES_LOADING :
             return {
                 ...state,
@@ -23,6 +24,7 @@ export const Dishes = (state = initialState, action) => {
                 dishes : [],
                 error : null
             }
+
         case ActionTypes.DISHES_FAILED :
             return {
                 ...state,
@@ -30,6 +32,7 @@ export const Dishes = (state = initialState, action) => {
                 dishes : [],
                 error : action.payload
             }
+            
         default : return state;
     }
 }
