@@ -4,7 +4,9 @@ import {Link} from 'react-router-dom'
 import LoadingComponent from './LoadingComponent';
 import {Button, Modal, ModalHeader, ModalBody, Label} from 'reactstrap';
 import {Control, LocalForm, Errors} from 'react-redux-form';
-import {baseUrl} from '../shared/baseUrl'
+import {baseUrl} from '../shared/baseUrl';
+import {FadeTransform, Fade, Stagger} from 'react-animation-components';
+
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -108,21 +110,23 @@ function RenderComments(props){
 
             const list = props.comments.map(comment =>{
                 return(
-                    <li key={comment.id} >
-                        <p>{comment.comment}</p>
-                        <p>--{comment.author},&nbsp;
-                            {new Intl.DateTimeFormat('en-US', {
-                                year: 'numeric',
-                                month: 'long',
-                                day: '2-digit'
-                            }).format(new Date(comment.date))}</p>
-                    </li>
+                    <Fade in>
+                        <li key={comment.id} >
+                            <p>{comment.comment}</p>
+                            <p>--{comment.author},&nbsp;
+                                {new Intl.DateTimeFormat('en-US', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: '2-digit'
+                                }).format(new Date(comment.date))}</p>
+                        </li>
+                    </Fade>
                 );
             })
             
             return(
                 <ul className='list-unstyled'>
-                    {list}
+                    <Stagger in>{list}</Stagger>
                     <CommentForm dishId={props.dishId} postComment={props.postComment}/>
                 </ul>
             );
@@ -168,14 +172,19 @@ export const DishDetail = (props) => {
 
                 <div className="row">
                     <div className="col-12 col-md-5 m-1">
-                        <Card>
-                            <CardImg width='100%' src = {baseUrl + props.dish.image} alt={props.dish.name}/>
+                        <FadeTransform in
+                            transformProps={{
+                                exitTransform: 'scale(0.5) translateY(-50%)'
+                            }}>
+                                <Card>
+                                    <CardImg width='100%' src = {baseUrl + props.dish.image} alt={props.dish.name}/>
 
-                            <CardBody>
-                                <CardTitle>{props.dish.name}</CardTitle>
-                                <CardText>{props.dish.description}</CardText>
-                            </CardBody>
-                        </Card> 
+                                    <CardBody>
+                                        <CardTitle>{props.dish.name}</CardTitle>
+                                        <CardText>{props.dish.description}</CardText>
+                                    </CardBody>
+                                </Card> 
+                        </FadeTransform>
                     </div>
 
                     <div className="col-12 col-md-5 m-1">
