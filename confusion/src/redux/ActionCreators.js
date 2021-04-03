@@ -85,9 +85,7 @@ export const addComments = (comments) => {
 export const addComment = (comment) =>{
     return ({
         type: ActionTypes.ADD_COMMENT,
-        payload : {
-            
-        }
+        payload : comment
     })
 }
 
@@ -219,3 +217,34 @@ export const addLeaders = (leaders) => {
         payload : leaders
     }
 }
+
+export const postFeedback = (feedback) => (dispatch) => {
+    return fetch(baseUrl + 'feedback', {
+        method : 'POST',
+        body : feedback,
+        headers : {
+            'Content-type' : 'application/json'
+        },
+        credentials : 'same-origin'
+    }).then(response => {
+        if(response.ok){
+            return response;
+        }else {
+            let error = new Error('Error '+ response.status + ': '+ response.statusText);
+            error.response = response;
+            throw error;
+        }
+    }, error => {
+        let errmsg = new Error(error.message);
+        throw errmsg;
+    })
+    .then(response => response.json())
+    .then(response =>
+      alert("Thank you for your feedback!" + JSON.stringify(response))
+    )
+    .catch(error => {
+      console.log("post feedbacks", error.message);
+      alert("Your feedback could not be posted\nError: " + error.message);
+    });
+}
+

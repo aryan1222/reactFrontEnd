@@ -18,12 +18,11 @@ class ContactComponent extends Component {
     }
 
     handleSubmit(values) {
-        console.log('Current State is: ' + JSON.stringify(values));
-        alert('Current State is: ' + JSON.stringify(values));
+        this.props.postFeedback(JSON.stringify(values));
         this.props.resetFeedbackForm();
     }
 
-    render() {
+    render() {  
 
         return (
             <div className="container">
